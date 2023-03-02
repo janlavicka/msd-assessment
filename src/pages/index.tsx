@@ -1,8 +1,14 @@
+import {
+  AlignCenterOutlined,
+  CommentOutlined,
+  DownloadOutlined,
+  FilterOutlined,
+} from "@ant-design/icons";
+import { Button, Card, Col, Image, Layout, Row, Space, Typography } from "antd";
+import { PT_Sans } from "next/font/google";
 import Head from "next/head";
-import { Inter } from "next/font/google";
-import { Button, Card, Col, Layout, Row } from "antd";
 
-const inter = Inter({ subsets: ["latin"] });
+const font = PT_Sans({ subsets: ["latin"], weight: ["400", "700"] });
 
 export default function Home() {
   return (
@@ -15,38 +21,135 @@ export default function Home() {
       </Head>
 
       <Layout style={{ minHeight: "100vh" }}>
-        <Layout.Header style={{ backgroundColor: "white" }}>
-          <div style={{ fontWeight: "bold" }}>App Title</div>
+        <Layout.Header
+          style={{
+            backgroundColor: "white",
+            boxShadow: "0px 5px 10px 0px rgba(0,0,0,0.1)",
+          }}
+        >
+          <div style={{ fontWeight: "bold", fontSize: 16, ...font.style }}>
+            App Title
+          </div>
         </Layout.Header>
 
-        <Layout.Content style={{ padding: "25px 50px" }}>
-          <h1>Page Title</h1>
+        <Layout.Content style={{ padding: "20px 50px" }}>
+          <Row wrap={false} style={{ marginBottom: "20px" }}>
+            <Col flex="auto" style={{ display: "flex", alignItems: "center" }}>
+              <Typography.Title
+                level={1}
+                style={{
+                  margin: 0,
+                  fontWeight: 400,
+                  fontSize: 20,
+                  ...font.style,
+                }}
+              >
+                Page Title
+              </Typography.Title>
+            </Col>
+
+            <Col flex="none">
+              <Space>
+                <Button
+                  type="text"
+                  icon={
+                    <DownloadOutlined
+                      style={{ color: "#369d8f", fontSize: 16 }}
+                    />
+                  }
+                  style={{ backgroundColor: "white", ...font.style }}
+                >
+                  Export to PDF
+                </Button>
+                <Button
+                  type="text"
+                  icon={
+                    <AlignCenterOutlined
+                      style={{ color: "#369d8f", fontSize: 16 }}
+                    />
+                  }
+                  style={{ backgroundColor: "white", ...font.style }}
+                >
+                  Notes (3)
+                </Button>
+                <Button
+                  type="text"
+                  icon={
+                    <FilterOutlined
+                      style={{ color: "#369d8f", fontSize: 16, ...font.style }}
+                    />
+                  }
+                  style={{ backgroundColor: "white" }}
+                >
+                  Filter (9+)
+                </Button>
+              </Space>
+            </Col>
+          </Row>
 
           <Row gutter={16}>
             <Col span={12}>
-              <Card title="Chart Title">
+              <Card title="Chart Title" style={font.style}>
                 <Card.Grid hoverable={false} style={{ width: "100%" }}>
                   content
                 </Card.Grid>
+
                 <Card.Grid
                   hoverable={false}
-                  style={{ width: "100%", padding: "12px 24px" }}
+                  style={{ width: "100%", padding: "6px 12px 6px 24px" }}
                 >
-                  footer
+                  <Row>
+                    <Col
+                      flex="auto"
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <Image
+                        width={25}
+                        src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                        alt="User Avatar"
+                        style={{ borderRadius: "100%" }}
+                      />
+                    </Col>
+
+                    <Col>
+                      <Button type="text" icon={<CommentOutlined />}>
+                        3
+                      </Button>
+                    </Col>
+                  </Row>
                 </Card.Grid>
               </Card>
             </Col>
 
             <Col span={12}>
-              <Card title="Chart Title">
+              <Card title="Chart Title" style={font.style}>
                 <Card.Grid hoverable={false} style={{ width: "100%" }}>
                   content
                 </Card.Grid>
+
                 <Card.Grid
                   hoverable={false}
-                  style={{ width: "100%", padding: "12px 24px" }}
+                  style={{ width: "100%", padding: "6px 12px 6px 24px" }}
                 >
-                  footer
+                  <Row>
+                    <Col
+                      flex="auto"
+                      style={{ display: "flex", alignItems: "center" }}
+                    >
+                      <Image
+                        width={25}
+                        src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
+                        alt="User Avatar"
+                        style={{ borderRadius: "100%" }}
+                      />
+                    </Col>
+
+                    <Col>
+                      <Button type="text" icon={<CommentOutlined />}>
+                        3
+                      </Button>
+                    </Col>
+                  </Row>
                 </Card.Grid>
               </Card>
             </Col>
