@@ -4,11 +4,14 @@ import {
   DownloadOutlined,
   FilterOutlined,
 } from "@ant-design/icons";
-import { Button, Card, Col, Image, Layout, Row, Space, Typography } from "antd";
-import { PT_Sans } from "next/font/google";
+import { Button, Card, Col, Layout, Row, Space, Typography } from "antd";
+import dynamic from "next/dynamic";
+import { Nunito } from "next/font/google";
 import Head from "next/head";
 
-const font = PT_Sans({ subsets: ["latin"], weight: ["400", "700"] });
+const font = Nunito({ subsets: ["latin"], weight: ["400", "700"] });
+
+const Chart = dynamic(() => import("../components/Chart"), { ssr: false });
 
 export default function Home() {
   return (
@@ -91,7 +94,7 @@ export default function Home() {
             <Col span={12}>
               <Card title="Chart Title" style={font.style}>
                 <Card.Grid hoverable={false} style={{ width: "100%" }}>
-                  content
+                  <Chart />
                 </Card.Grid>
 
                 <Card.Grid
@@ -103,11 +106,14 @@ export default function Home() {
                       flex="auto"
                       style={{ display: "flex", alignItems: "center" }}
                     >
-                      <Image
-                        width={25}
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
                         src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
                         alt="User Avatar"
+                        width={25}
+                        height={25}
                         style={{ borderRadius: "100%" }}
+                        loading="lazy"
                       />
                     </Col>
 
@@ -124,7 +130,7 @@ export default function Home() {
             <Col span={12}>
               <Card title="Chart Title" style={font.style}>
                 <Card.Grid hoverable={false} style={{ width: "100%" }}>
-                  content
+                  <Chart />
                 </Card.Grid>
 
                 <Card.Grid
@@ -136,11 +142,14 @@ export default function Home() {
                       flex="auto"
                       style={{ display: "flex", alignItems: "center" }}
                     >
-                      <Image
-                        width={25}
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
                         src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
                         alt="User Avatar"
+                        width={25}
+                        height={25}
                         style={{ borderRadius: "100%" }}
+                        loading="lazy"
                       />
                     </Col>
 
