@@ -23,7 +23,7 @@ export function Actions() {
         }
         style={{ backgroundColor: "white", ...font.style }}
       >
-        Notes (3)
+        Notes <span style={{ color: "#9a9a9e", marginLeft: 5 }}>(3)</span>
       </Button>
       <Button
         type="text"
@@ -34,7 +34,23 @@ export function Actions() {
         }
         style={{ backgroundColor: "white" }}
       >
-        Filter (9+)
+        Filter{" "}
+        <span
+          style={{
+            display: "inline-flex",
+            height: 22,
+            width: 22,
+            marginLeft: 5,
+            justifyContent: "center",
+            borderRadius: "100%",
+            backgroundColor: "#369d8f",
+            color: "white",
+            fontSize: 12,
+            lineHeight: "22px",
+          }}
+        >
+          9+
+        </span>
       </Button>
     </Space>
   );
