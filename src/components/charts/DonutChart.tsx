@@ -10,11 +10,11 @@ export function DonutChart({ data }: Props) {
   const chart = useRef<Chart | null>(null);
 
   useEffect(() => {
-    if (chart.current) return;
+    if (chart.current || !container.current) return;
 
     chart.current = new Chart({
       container: container.current as HTMLElement,
-      width: 500,
+      width: container.current.clientWidth,
       height: 300,
     });
 
@@ -23,6 +23,10 @@ export function DonutChart({ data }: Props) {
     chart.current.coordinate("theta", {
       radius: 0.75,
       innerRadius: 0.6,
+    });
+
+    chart.current.scale("value", {
+      formatter: (val) => val + "%",
     });
 
     chart.current

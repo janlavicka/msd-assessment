@@ -10,11 +10,11 @@ export function BarChart({ data }: Props) {
   const chart = useRef<Chart | null>(null);
 
   useEffect(() => {
-    if (chart.current) return;
+    if (chart.current || !container.current) return;
 
     chart.current = new Chart({
       container: container.current as HTMLElement,
-      width: 500,
+      width: container.current.clientWidth,
       height: 300,
     });
 

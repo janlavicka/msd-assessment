@@ -14,7 +14,7 @@ const Chart = dynamic(
 );
 
 export function CasesByAgePanel() {
-  const { data, isFetched } = trpc.variants.useQuery();
+  const { data, isFetched } = trpc.casesByAge.useQuery();
 
   const renderChart = useCallback(() => {
     if (!isFetched) return <Loading />;
