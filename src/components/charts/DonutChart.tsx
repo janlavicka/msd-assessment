@@ -1,20 +1,16 @@
 import { useEffect, useRef } from "react";
 import { Chart } from "@antv/g2";
 
-export function DonutChart() {
+type Props = {
+  data: { title: string; value: number }[];
+};
+
+export function DonutChart({ data }: Props) {
   const container = useRef<HTMLDivElement | null>(null);
   const chart = useRef<Chart | null>(null);
 
   useEffect(() => {
     if (chart.current) return;
-
-    const data = [
-      { title: "Sports", value: 275 },
-      { title: "Strategy", value: 115 },
-      { title: "Action", value: 120 },
-      { title: "Shooter", value: 350 },
-      { title: "Other", value: 150 },
-    ];
 
     chart.current = new Chart({
       container: container.current as HTMLElement,
@@ -36,7 +32,7 @@ export function DonutChart() {
       .color("title", ["#399c90", "#55b9a2", "#6dceb3", "#9e76f5"]);
 
     chart.current.render();
-  }, []);
+  }, [data]);
 
   return <div ref={container}></div>;
 }

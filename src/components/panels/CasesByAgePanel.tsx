@@ -1,7 +1,10 @@
 import { font } from "@/utils/fonts";
+import { trpc } from "@/utils/trpc";
 import { CommentOutlined } from "@ant-design/icons";
 import { Button, Card, Col, Row } from "antd";
 import dynamic from "next/dynamic";
+import { useCallback } from "react";
+import { Loading } from "../Loading";
 
 const Chart = dynamic(
   () => import("../charts/BarChart").then((mod) => mod.BarChart),
@@ -11,10 +14,20 @@ const Chart = dynamic(
 );
 
 export function CasesByAgePanel() {
+  const { data, isFetched } = trpc.variants.useQuery();
+
+  const renderChart = useCallback(() => {
+    if (!isFetched) return <Loading />;
+
+    if (data) return <Chart data={data} />;
+
+    return null;
+  }, [data, isFetched]);
+
   return (
     <Card title="New cases by age group" style={font.style}>
       <Card.Grid hoverable={false} style={{ width: "100%" }}>
-        <Chart />
+        {renderChart()}
       </Card.Grid>
 
       <Card.Grid
